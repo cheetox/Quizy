@@ -71,7 +71,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 :  Center(
                 child: Column(
                   children: [
-                    CircleAvatarWidget(context),
+                    CircleAvatarWidget(context,snapshot.data![2]),
                     nickNameText(context,snapshot.data![0]),
                     Expanded(
                       flex: 4,
@@ -172,7 +172,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           "Avatar Seç",
           style: Theme.of(context).textTheme.titleLarge,
         ),
-        IconButton(onPressed: () {}, icon: Icon(Icons.arrow_forward_ios))
+        IconButton(onPressed: () {
+        _userService.changeAvatars('https://firebasestorage.googleapis.com/v0/b/cookcaquiz.appspot.com/o/1.png?alt=media&token=abcd8ce4-6227-4454-99b2-a3590b95246a');
+        }, icon: Icon(Icons.arrow_forward_ios))
       ],
     );
   }
@@ -270,13 +272,13 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     );
   }
 
-  Expanded CircleAvatarWidget(BuildContext context) {
+  Expanded CircleAvatarWidget(BuildContext context,avatar) {
     return Expanded(
       child: Padding(
         padding: EdgeInsets.only(top: context.dynamicHeight(0.05)),
         child: CircleAvatar(
           backgroundColor: Colors.transparent,
-          child: ReusableWidgets.getImageAsset("avatar.png"),
+          child: Image.network(avatar),
           radius: 75,
         ),
       ),

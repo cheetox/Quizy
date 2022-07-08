@@ -102,7 +102,7 @@ class _MainBottomBarScreenState extends State<MainBottomBarScreen> {
       //
       //using this page controller you can make beautiful animation effects
       _pageController.animateToPage(index,
-          duration: Duration(milliseconds: 500), curve: Curves.easeOut);
+          duration: Duration(milliseconds: 250), curve: Curves.easeOut);
     });
   }
 }
